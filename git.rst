@@ -24,5 +24,5 @@ git add .
 commit files
 git commit -m "First commit"
 
-Adding a local repository to github with Github CLI
+Adding a local repository to github with Github CLI (follow prompts)
 gh repo create
