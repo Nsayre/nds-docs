@@ -57,3 +57,7 @@ ignore all .csv files : \*.csv
 ignore an entire directory : temp/
 ignore a specific file : pattern.gds
 make exceptions to previous patterns : !temp/donotdelete.txt
+
+in order to stop git from tracking a folder that was tracked and then added to .gitignore.
+git rm -r --cached my_folder
+
