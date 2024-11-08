@@ -10,24 +10,39 @@ Common commands & Special symbols
 * [rm -R] remove a directory and it's contents recursively
 | mv : Move a file to a different directory
 | man : View the manual of a command
+| cat : concatenate files and print on the standard output
 | ~ : refers to the HOME directory
+| eval : Evaluates and executes strings as a shell command
+
 ===============
 How to navigate man pages
 ===============
 TODO
+
 ===============
 Explanation of folders
 ===============
+
 TODO
 ===============
 How to write and execute scripts
+
 ===============
 TODO
 ===============
 How to setup an alias
 ===============
 TODO
+
 ===============
 Environmental variables
 ===============
 TODO
+
+===============
+Essential packages
+===============
+sudo apt update
+sudo apt install neovim git keychain gh
+sudo apt upgrade
+TODO manage automatically

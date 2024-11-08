@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'wiki'
+project = 'nds-docs'
 copyright = '2024, NDS'
 author = 'NDS'
 
