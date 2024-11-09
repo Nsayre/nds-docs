@@ -1,6 +1,7 @@
 ===============
-Common commands & Special symbols
+Common commands, symbols, and special variables
 ===============
+
 | cd : Change directory
 * cd : navigate to previous directory
 | touch : change file timestamps (though is used to create empty files)
@@ -13,24 +14,28 @@ Common commands & Special symbols
 | cat : concatenate files and print on the standard output
 | ~ : refers to the HOME directory
 | eval : Evaluates and executes strings as a shell command
+| $_ : special variable that refers to the last argument of the previous command
 
 ===============
-How to navigate man pages
-===============
-TODO
-
-===============
-Explanation of folders
+Man Pages
 ===============
 
 TODO
-===============
-How to write and execute scripts
 
 ===============
-TODO
+Linux Directory Structure
 ===============
-How to setup an alias
+
+TODO
+
+===============
+Scripts
+===============
+
+TODO
+
+===============
+Aliases
 ===============
 TODO
 
@@ -52,7 +57,26 @@ sudo apt-get install -f
 ===============
 Essential packages
 ===============
+
 sudo apt update
 sudo apt install neovim git keychain gh curl
 sudo apt upgrade
 TODO manage automatically
+
+===============
+Chaining shell commands
+===============
+
+&& : Performs the following command only if the previous command succeeds
+|| : Performs the following command only if the previous command fails
+
+Pipes connect the stout of the previous command to the stin of the following command.
+
+Example:
+cat file.txt | grep "error" && echo "Errors found!" : prints "Errors found!" if file.txt contains lines that contain the word "error"
+
+===============
+Makefiles
+===============
+
+TODO
