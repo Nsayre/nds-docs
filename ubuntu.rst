@@ -40,9 +40,19 @@ Environmental variables
 TODO
 
 ===============
+How to install a .deb file on ubuntu
+===============
+
+sudo dpkg -i filename.deb
+
+If the previous command fails, then run the following command to resolve missing dependencies
+
+sudo apt-get install -f
+
+===============
 Essential packages
 ===============
 sudo apt update
-sudo apt install neovim git keychain gh
+sudo apt install neovim git keychain gh curl
 sudo apt upgrade
 TODO manage automatically
