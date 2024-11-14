@@ -1,4 +1,21 @@
 ===============
+Terminology
+===============
+
+| command line: A text-based interface for a user to interact with an operating system.
+| shell : The program that accepts user input and returns their output
+| terminal : A windowed application that displays the input and output of command line commands.
+
+===============
+Software Selections and Motivations
+===============
+OS : Ubuntu : Stability
+Shell :
+Terminal :
+IDE :
+
+
+===============
 Common commands, symbols, and special variables
 ===============
 
@@ -15,6 +32,7 @@ Common commands, symbols, and special variables
 | ~ : refers to the HOME directory
 | eval : Evaluates and executes strings as a shell command
 | $_ : special variable that refers to the last argument of the previous command
+| source : execute commands from a file in the current shell environment
 
 ===============
 Man Pages
@@ -79,4 +97,9 @@ cat file.txt | grep "error" && echo "Errors found!" : prints "Errors found!" if 
 Makefiles
 ===============
 
-TODO
+The make command will execute a makefile (typically named "Makefile"). Makefiles are a convenient way to automate repetitive tasks such as software compilation.
+A makefile consists of targets, dependencies, and commands.
+
+Target : The file or action you want to create or run (Ex: myprogram)
+Dependencies: Files that are needed to create the target (Such as source code files)
+Command : the command to execute to create the target (Ex: gcc -o myprogram main.c)
