@@ -33,6 +33,8 @@ Common commands, symbols, and special variables
 | eval : Evaluates and executes strings as a shell command
 | $_ : special variable that refers to the last argument of the previous command
 | source : execute commands from a file in the current shell environment
+| curl : makes an http request
+* [curl -s https://example.com/data/example.csv > data/example_data.csv] makes the request silently and suppresses progress output and error messages
 
 ===============
 Man Pages
