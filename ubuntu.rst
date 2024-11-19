@@ -35,6 +35,8 @@ Common commands, symbols, and special variables
 | source : execute commands from a file in the current shell environment
 | curl : makes an http request
 * [curl -s https://example.com/data/example.csv > data/example_data.csv] makes the request silently and suppresses progress output and error messages
+| zip : package and compress a files
+| unzip : list, test, or extract compressed files in a ZIP archive
 
 ===============
 Man Pages
@@ -105,3 +107,9 @@ A makefile consists of targets, dependencies, and commands.
 Target : The file or action you want to create or run (Ex: myprogram)
 Dependencies: Files that are needed to create the target (Such as source code files)
 Command : the command to execute to create the target (Ex: gcc -o myprogram main.c)
+
+===============
+How to handle zipped files
+===============
+
+TODO
