@@ -10,15 +10,17 @@ Terminology
 Software Selections and Motivations
 ===============
 OS : Ubuntu : Stability
-Shell :
+Shell : zsh : plugins, popularity
 Terminal :
-IDE :
-
+Text editor/IDE : neovim : vim style hotkeys and philosophy
 
 ===============
 Common commands, symbols, and special variables
 ===============
 
+| whatis : Display a one line description of a command
+| man : View the manual of a command
+| echo : display a line of text
 | cd : Change directory
 * cd : navigate to previous directory
 | touch : change file timestamps (though is used to create empty files)
@@ -27,7 +29,6 @@ Common commands, symbols, and special variables
 | rm : Remove files or directories
 * [rm -R] remove a directory and it's contents recursively
 | mv : Move a file to a different directory
-| man : View the manual of a command
 | cat : concatenate files and print on the standard output
 | ~ : refers to the HOME directory
 | eval : Evaluates and executes strings as a shell command
@@ -37,6 +38,7 @@ Common commands, symbols, and special variables
 * [curl -s https://example.com/data/example.csv > data/example_data.csv] makes the request silently and suppresses progress output and error messages
 | zip : package and compress a files
 | unzip : list, test, or extract compressed files in a ZIP archive
+| chsh : change login shell
 
 ===============
 Man Pages
@@ -81,7 +83,7 @@ Essential packages
 ===============
 
 sudo apt update
-sudo apt install neovim git keychain gh curl
+sudo apt install neovim git keychain gh curl zsh
 sudo apt upgrade
 TODO manage automatically
 
