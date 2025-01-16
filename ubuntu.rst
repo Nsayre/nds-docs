@@ -11,8 +11,9 @@ Software Selections and Motivations
 ===============
 OS : Ubuntu : Stability
 Shell : zsh : plugins, popularity
-Terminal :
+Terminal : TODO trying alacritty
 Text editor/IDE : neovim : vim style hotkeys and philosophy
+Neovim package manager: TODO trying vim-plug 
 
 ===============
 Common commands, symbols, and special variables
