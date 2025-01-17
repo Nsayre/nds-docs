@@ -26,18 +26,25 @@ Sets
 Setting up venv
 ===============
 
+Create project folder, enter it and activate venv
 | mkdir my_project
 | cd my_project
 | python3 -m venv venv
 | source venv/bin/activate
 
+Install relevant packages
+| pip install numpy
 Save requirements.txt
-pip freeze > requirements.txt
+| pip freeze > requirements.txt
 
 Install from requirements.txt
+| pip install -r requirements.txt
 
-pip install -r requirements.txt
+===============
+Activating/Deactivating venv
+===============
+Activating
+| source venv/bin/activate
 
-| deactivate venv
+Deactivating
 | deactivate
-| requirements.txt...
