@@ -13,7 +13,6 @@ documentation for details.
 
 .. toctree::
    :maxdepth: 2
-   python
-   linux
-   :caption: Contents:
 
+   python
+   ubuntu
