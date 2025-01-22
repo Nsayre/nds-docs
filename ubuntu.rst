@@ -10,6 +10,7 @@ Terminology
 Software Selections and Motivations
 ===============
 OS : Ubuntu : Stability
+Audio : pavucontrol : Ubiquity
 Shell : zsh : plugins, popularity
 Terminal : TODO trying alacritty
 Text editor/IDE : neovim : vim style hotkeys and philosophy
