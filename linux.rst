@@ -27,6 +27,8 @@ Common commands, symbols, and special variables
 * cd : navigate to previous directory
 | touch : change file timestamps (though is used to create empty files)
 | ls : List directory contents
+ls -l shows file permissions
+ls -al shows hidden files
 | cp : Copy files and directories
 | rm : Remove files or directories
 * [rm -R] remove a directory and it's contents recursively
@@ -41,6 +43,19 @@ Common commands, symbols, and special variables
 | zip : package and compress a files
 | unzip : list, test, or extract compressed files in a ZIP archive
 | chsh : change login shell
+chmod : change file mode bits
+chmod +x <filename> gives execute permissions
+chmod 700 <directory/filename> set permission for .ssh directory
+useradd : low level command that requires some flags to setup a fully functional user
+useradd -m -s /bin/bash <username> : adds user with bash as default shell and sets up their home directory structure
+adduser : interactive higher level tool that will prompt information like password, phone number etc.
+userdel : remove a user
+userdel -r <username> : removes user and their home directory
+usermod: modify a user account
+usermod -aG sudo <username> : adds a user to the sudo group
+sed: stream editor for filtering and transforming test
+sed -i "s/<oldstring>/<newstring>/" <file>
+sed -i '$ a This is appended to the last line' file.txt
 
 ===============
 Man Pages
