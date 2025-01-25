@@ -48,3 +48,9 @@ Activating
 
 Deactivating
 | deactivate
+
+===============
+Unittest
+===============
+Running only a single test
+python -m unittest <module_name>.py
