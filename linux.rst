@@ -102,7 +102,7 @@ Essential packages
 ===============
 
 sudo apt update
-sudo apt install neovim git keychain gh curl zsh i3 docker.io
+sudo apt install neovim git keychain gh curl zsh i3 docker.io nginx
 sudo apt upgrade
 TODO manage automatically
 
