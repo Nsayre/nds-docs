@@ -1,0 +1,5 @@
+===============
+hotkeys
+===============
+
+hold mod + right click to resize windows
