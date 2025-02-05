@@ -47,15 +47,24 @@ chmod : change file mode bits
 chmod +x <filename> gives execute permissions
 chmod 700 <directory/filename> set permission for .ssh directory
 useradd : low level command that requires some flags to setup a fully functional user
-useradd -m -s /bin/bash <username> : adds user with bash as default shell and sets up their home directory structure
-adduser : interactive higher level tool that will prompt information like password, phone number etc.
-userdel : remove a user
+adduser :minteractive higher level tool that will prompt information like password, phone number etc.
+mserdel : remove a user
 userdel -r <username> : removes user and their home directory
 usermod: modify a user account
 usermod -aG sudo <username> : adds a user to the sudo group
 sed: stream editor for filtering and transforming test
 sed -i "s/<oldstring>/<newstring>/" <file>
 sed -i '$ a This is appended to the last line' file.txt
+su : change user
+su <username>
+passwd : change user password
+passwd -d <username> : delete a user's password
+scp 
+scp myfile.txt user@192.168.1.10:/home/user/
+sudo: Execute a command as another user
+sudo -u <username> : run command as username user
+chown: Change file ownership
+chown <USER>:<GROUP> <FILE>
 
 ===============
 Man Pages
@@ -102,7 +111,7 @@ Essential packages
 ===============
 
 sudo apt update
-sudo apt install neovim git keychain gh curl zsh i3 docker.io nginx
+sudo apt install neovim git keychain gh curl zsh i3 docker.io nginx tldr
 sudo apt upgrade
 TODO manage automatically
 
