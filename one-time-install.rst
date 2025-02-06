@@ -14,8 +14,10 @@ chsh -s /usr/bin/zsh
 # Verify change via running echo $0 to print current running shell
 
 # Change default terminal to Alacritty
+# TEST the following command, I think it works
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
+# Alternatively... use the following and select from the list of options
 sudo update-alternatives --config x-terminal-emulator
-# Select Alacritty from the list of options
 
 # Download alacritty themes and set zenburn
 mkdir -p ~/.config/alacritty/themes
@@ -49,3 +51,8 @@ Follow instructions on https://developer.1password.com/docs/cli/get-started/
 # op plugin init gh
 # Follow prompts
 
+
+# Change firefox settings
+type about:config into address bar and set
+browser.sessionstore.restore_on_demand = false
+browser.sessionstore.restore_tabs_lazily = false
