@@ -3,15 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to my site.
-==================
+Home
+==========
+
+Welcome.
+
+| My name is Nick and I am an engineer who is interested in computers, programming, and technology in general.
+| I hope you find the projects in my portfolio interesting, and my guides useful.
 
 .. toctree::
    :maxdepth: 1
 
-   Portfolio
-   Notes
-   GNU-Linux
-   Git
-   Python
-   About
+   portfolio/index
+
+.. toctree::
+   :maxdepth: 1
+
+   guides/index

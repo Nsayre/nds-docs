@@ -6,14 +6,12 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'project-name'
+project = 'Nicholas Sayre'
 copyright = '2025, Nicholas Sayre'
 author = 'Nicholas Sayre'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-
-extensions = []
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -23,5 +21,14 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'groundwork'
+html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
+
+# html_show_sphinx = False
+
+# My modifications
+html_title = ''
+# html_sidebars = {
+#    '**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html'],
+#    'using/windows': ['windows-sidebar.html', 'searchbox.html'],
+# }
