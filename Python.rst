@@ -1,5 +1,5 @@
 ===============
-Data Structures
+Python
 ===============
 
 Lists
@@ -22,12 +22,11 @@ Sets
    mutable
    unordered
 
-===============
 Setting up venv
 ===============
 
 Create project folder, enter it and activate venv
-| mkdir my_project
+   mkdir my_project
 | cd my_project
 | python3 -m venv venv
 | source venv/bin/activate
@@ -40,7 +39,6 @@ Save requirements.txt
 Install from requirements.txt
 | pip install -r requirements.txt
 
-===============
 Activating/Deactivating venv
 ===============
 Activating
@@ -49,7 +47,6 @@ Activating
 Deactivating
 | deactivate
 
-===============
 Unittest
 ===============
 Running only a single test

@@ -1,4 +1,7 @@
-===============
+======
+Git
+======
+
 Common Commands
 ===============
 git clone :
@@ -6,13 +9,11 @@ git pull :
 git push : 
 git status :
 
-===============
 Cloning a directory
 ===============
 
 TODO
 
-===============
 Example standard git workflow
 ===============
 
@@ -31,7 +32,6 @@ git push origin main
 confirm status
 git status
 
-===============
 Adding local code to github
 ===============
 Initializing a git repository
@@ -45,7 +45,6 @@ git commit -m "First commit"
 Adding a local repository to github with Github CLI (follow prompts)
 gh repo create
 
-===============
 Ignoring files
 ===============
 
@@ -61,7 +60,6 @@ make exceptions to previous patterns : !temp/donotdelete.txt
 in order to stop git from tracking a folder that was tracked and then added to .gitignore.
 git rm -r --cached my_folder
 
-===============
 Commit messages
 ===============
 
