@@ -6,6 +6,10 @@ One time install
 
 # NOTE update, upgrade, and install all apps first
 
+sudo apt-get update && sudo apt-get -y upgrade
+
+sudo apt install neovim git keychain gh curl zsh i3 docker.io nginx tldr python3-venv
+
 # Remove snap firefox and install .deb firefox
 Can follow instructions here: https://support.mozilla.org/en-US/kb/install-firefox-linux
 

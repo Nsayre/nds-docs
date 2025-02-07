@@ -107,15 +107,6 @@ If the previous command fails, then run the following command to resolve missing
 sudo apt-get install -f
 
 ===============
-Essential packages
-===============
-
-sudo apt update
-sudo apt install neovim git keychain gh curl zsh i3 docker.io nginx tldr
-sudo apt upgrade
-TODO manage automatically
-
-===============
 Chaining shell commands
 ===============
 
