@@ -3,8 +3,8 @@ Guides
 ===============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   GNU-Linux
+   Command-Line-Linux
    Git
    Python
