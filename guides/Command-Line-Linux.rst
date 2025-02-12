@@ -3,7 +3,6 @@ Command Line Linux
 ******************
 
 | This guide aims to be a concise and practical guide to the linux command line.
-| It is a work in progress.
 
 .. only:: comment
 
@@ -36,7 +35,7 @@ Introduction
    $ mv Downloads/file1.txt /media/user/backup/
    $ sudo chown -R $USERNAME:$USERNAME /var/www/$DOMAIN
 
-The prompt proceeds the command, indicating that a line is ready for user input.
+The prompt proceeds the command. It indicates that a line is ready for user input.
 The prompt can be customized to display relevant information, however its default behavior reveals whether the current user is a normal user (with a "$" prompt) or the root user (with a "#" prompt). 
 The root user is also referred to as the superuser.
 
@@ -100,6 +99,28 @@ The "man" command displays those manuals.
 
 tldr-pages (https://tldr.sh/) aims to simplify man pages and can sometimes be the fastest way to find commonly used commands.
 
+Linux Anatomy
+=============
+TODO overall structure of the OS, filesystem, inodes, concepts of ownership, group, permissions, distributions
+
+At the highest level all software runs on hardware
+'s diagram beautifully illustrates how the Linux kernel is at the core of a Linux operating system.
+It is perhaps more correct to say that what we call 
+
+Computers execute operating systems (OS) which 
+
+File System
+^^^^^^^^^^^
+files, special files, directories, inodes
+
+User, Group, and Privilege?
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+TODO There must be a better term for this
+
+Distributions
+^^^^^^^^^^^^^
+What actually differs in distributions
+
 Hotkeys
 =======
 
@@ -110,13 +131,118 @@ Ctrl+e (I think, my muscle memory is better than my real memory) to jump to the 
 Tab+arrow key to skip words, forward or backwards
 Ctrl+r to enter “history search”, you can type the beginning of a command and it’ll auto-fill the last-executed match. Keep pressing to get more matches.
 
-Essential Commands, Symbols, and Special Variables
-==================================================
+Commands
+========
 
+File & System Interaction
+^^^^^^^^^^^^^^^^^^^^^^^^^
+man
+info
+exit
 
+history
+pwd
+cd
+ls
+alias
+unalias
+cal
+free
 
+mv
+cp
+rm
+mkdir
+rmdir
+touch
+which
+locate
+find
+free
+ln
+mount
+umount
 
+file
+zip
+unzip
+tar
 
+export
+env
+unset
+printenv
+
+df
+du
+top/htop
+
+uname
+hostname
+
+time
+systemctl
+
+watch
+jobs
+kill
+pkill
+pgrep
+shutdown
+
+Text Interaction
+^^^^^^^^^^^^^^^^
+echo
+cat
+head
+tail
+grep
+sed
+awk
+sort
+cut
+diff
+tee
+
+nano/vi/jed
+
+User and Privilege Control
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+whoami
+finger
+last
+sudo
+su
+chmod
+chown
+umask
+chgrp
+useradd
+adduser
+userdel
+passwd
+
+Network
+^^^^^^^
+ping
+wget
+curl
+scp
+rsync
+ip
+netstat
+nslookup
+dig
+nmap
+ufw
+fail2ban
+
+Package Managers
+^^^^^^^^^^^^^^^^
+
+Ubuntu:
+apt
+apt-get
 
 | whatis : Display a one line description of a command
 | man : View the manual of a command
@@ -164,16 +290,11 @@ sudo -u <username> : run command as username user
 chown: Change file ownership
 chown <USER>:<GROUP> <FILE>
 
-Environmental Variables
-=======================
+Symbols and Special Variables
+=============================
 
+Working title, maybe variables is not correct
 
-Linux Directory Structure
-=========================
-
-
-Symbolic Links
-==============
 
 Scripting
 =========
@@ -181,11 +302,9 @@ Scripting
 The Shebang
 -----------
 
-Manipulating Text
------------------
-
-Here Document
-^^^^^^^^^^^^^
+Set
+---
+set -x
 
 Chaining Commands
 -----------------------
@@ -198,11 +317,34 @@ Pipes connect the stout of the previous command to the stin of the following com
 Example:
 cat file.txt | grep "error" && echo "Errors found!" : prints "Errors found!" if file.txt contains lines that contain the word "error"
 
-Aliases
-=======
+Expansions, Aliases, and Environment
+------------------------------------
+TODO what makes your scrip run differently on my machine.
+
+IO Redirection
+-----------------
+<
+>
+2>
+2>&1
+<()
+> /dev/null
+&>
+1>&2
+>>
+
+Handling Text
+-------------
+Use cases for echo, sed, awk
+
+Here Document
+^^^^^^^^^^^^^
 
 Package Management
 ==================
+
+The Purpose of Package Management
+---------------------------------
 
 Package Management on Ubuntu
 ----------------------------
