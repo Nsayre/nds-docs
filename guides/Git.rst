@@ -4,32 +4,23 @@ Git
 
 Introduction
 ============
-Git is
 
-Best Practices and Etiquette
-============================
+| Git is a distributed version control system (VCS).
 
-Commit Messages
-^^^^^^^^^^^^^^^
+| The purpose of a VCS is to document and preserve changes in files (most notably code) to facilitate development.
 
-Clear and concise commit messages make approving pull requests easier and facilitate collaborative development. Here are some general guidelines to keep messages clear and concise.
+| Code is typically only documented in its current state, without a description of why it changed from its previous version.
+| The documentation aspect of VCS provides a medium to capture who made a change, what they changed, and for what purpose.
 
-The first line should be a short summary, like a headline, that describes the purpose of the commit. Ideally it is 50 characters or fewer.
+| Preservation of changes prevents data loss, and allows easily confirming software behavior between versions. This is immensely helpful in debugging.
 
-If the first line does not adequately describe the changes, then it should be followed by a blank line and a longer detailed description. The detailed description can add detail to the purpose, as well as elaborate on how it was achieved. It can also include any information that would be helpful to reviewers or contributors that will be viewing the message.
+| A VCS extends the concept of saving a project beyond its current state to capturing all of its changes over time.
+| These changes sometimes move in different directions, only to recombine later, or continue deviating indefinitely.
 
-All parts of the message should be written in the imperative mood. Example: "Fix typo in README". The main verbs in the imperative mood are in the present tense, unlike non-imperative mood messages like "Fixed typo in README". Imperative mood messages read as if they are commands to achieve what has been done.
+| Version control systems are essential for modern collaborative software development.
 
-Commit messages should include references to relevant issues or tasks. Example: "Fix login validation bug (#123)
-
-Branching
-^^^^^^^^^
-
-Squashing Commits? something like that
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Most Common Commands
-====================
+Essential Commands
+==================
 git clone :
 git pull :
 git push : 
@@ -76,6 +67,28 @@ git commit -m "First commit"
 
 Adding a local repository to github with Github CLI (follow prompts)
 gh repo create
+
+Best Practices and Etiquette
+============================
+
+Commit Messages
+^^^^^^^^^^^^^^^
+
+Clear and concise commit messages make approving pull requests easier and facilitate collaborative development. Here are some general guidelines to keep messages clear and concise.
+
+The first line should be a short summary, like a headline, that describes the purpose of the commit. Ideally it is 50 characters or fewer.
+
+If the first line does not adequately describe the changes, then it should be followed by a blank line and a longer detailed description. The detailed description can add detail to the purpose, as well as elaborate on how it was achieved. It can also include any information that would be helpful to reviewers or contributors that will be viewing the message.
+
+All parts of the message should be written in the imperative mood. Example: "Fix typo in README". The main verbs in the imperative mood are in the present tense, unlike non-imperative mood messages like "Fixed typo in README". Imperative mood messages read as if they are commands to achieve what has been done.
+
+Commit messages should include references to relevant issues or tasks. Example: "Fix login validation bug (#123)
+
+Branching
+^^^^^^^^^
+
+Squashing Commits? something like that
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ignoring Files with .gitignore
 ==============================
