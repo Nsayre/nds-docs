@@ -9,48 +9,80 @@ Introduction
 
 | The purpose of a VCS is to document and preserve changes in files (most notably code) to facilitate development.
 
-| Code is typically only documented in its current state, without a description of why it changed from its previous version.
-| The documentation aspect of VCS provides a medium to capture who made a change, what they changed, and for what purpose.
+Code is typically only documented in its current state, without a description of why it changed from its previous version.
+The documentation aspect of VCS provides a medium to capture who made a change, what they changed, and for what purpose.
+Preservation of changes prevents data loss, and allows easily confirming software behavior between versions. This is immensely helpful in debugging.
 
-| Preservation of changes prevents data loss, and allows easily confirming software behavior between versions. This is immensely helpful in debugging.
+A VCS extends the concept of saving a project beyond a singular view of its current state to capturing its history over time.
+The history of a git repository takes the shape of a tree, formed of instances of code changes called "commits".
 
-| A VCS extends the concept of saving a project beyond its current state to capturing all of its changes over time.
-| These changes sometimes move in different directions, only to recombine later, or continue deviating indefinitely.
+The structure of the history of a git repository forms a tree, which began at the first commit
 
-| Version control systems are essential for modern collaborative software development.
+Version control systems are essential for modern collaborative software development.
+
+
+Git Hosting Services
+^^^^^^^^^^^^^^^^^^^^
+Github and Gitlab are examples of services that host git repositories and provide additional features. Despite not being affiliated with the original Git project, they provide cloud hosting of repositories and useful features.
+
+Git hosting services provide notable features such as pull requests, issue tracking, and project management that facilitate project collaboration.
+
+Most software development with git occurs via a hosting service.
+
+Terminology
+^^^^^^^^^^^
+| **Remote Repo**: A git repo hosted elsewhere (Could be Github, could be elsewhere on your machine).
+| **Commit**: A unit of code-change that advances Git history. Commits should be a cohesive change to code, and should include messages that describe the scope of the change and potentially its purpose.
+| **Staging**: Selecting changes to be committed.
 
 Essential Commands
 ==================
-git clone :
-git pull :
-git push : 
-git status :
+| git clone : Clone (copy) an existing repository.
+| git pull : Fetch branch from a remote repository and merge it to local repository.
+| git push : Push commits to a remote repository
+| git status : Show the changes to files in a Git repository.
 
 Simple Workflows
 ================
 
-Cloning an Existing Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Creating a New Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^
+The following is the canonical way to capture the current state of a directory as a new git repo:
+
+.. code-block:: text
+
+   $ cd /path/to/my/codebase
+   $ git init
+   $ git add .
+   $ git commit
+
+Cloning an Existing Repository from a Hosting Service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Cloning is the act of making a local copy of a repository that exists on another computer (remote) onto your computer.
 
 TODO
 
-Updating an Existing Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Creating 
 
-Check status of current repository to see if local code is up to date
-git status
+Pushing to a Remote
+^^^^^^^^^^^^^^^^^^^
 
-add changes
-git add [filename]  
+.. code-block:: text
 
-commit changes
-git commit -m "commit message"
+   # Check status of current repository
+   $ git status
+   # Stage changes
+   $ git add [filename]
+   # Commit changes
+   $ git commit -m "<COMMIT_MESSAGE>"
+   # Push changes
+   $ git push origin main
+   # confirm status
+   $ git status
 
-push changes
-git push origin main
-
-confirm status
-git status
+Pulling from a Remote
+^^^^^^^^^^^^^^^^^^^^^
 
 Creating a New Repository and Uploading it to Github
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
