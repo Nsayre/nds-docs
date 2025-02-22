@@ -33,6 +33,20 @@ Terminology
 | **Commit**: A unit of code-change that advances Git history. Commits should be a cohesive change to code, and should include messages that describe the scope of the change and potentially its purpose.
 | **Staging**: Selecting changes to be committed.
 
+Setup
+^^^^^
+Git has configuration at the system, user, and repository level.
+It is necessary to configure your username and email because this information will be tied to your commit history.
+
+.. code-block:: text
+
+   # Set git username and email globally
+   $ git config --global user.name "<FULL_NAME>"
+   $ git config --global user.email <EMAIL_ADDRESS>
+   # Optionally you may want to specify the default text editor for commit messages or the default branch name
+   $ git config --global core.editor nvim
+   $ git config --global init.defaultBranch main
+
 Essential Commands
 ==================
 | **git clone**: Clone an existing repository.
@@ -256,3 +270,12 @@ In order to stop git from tracking a folder that was previously tracked that you
 .. code-block:: text
 
    git -rm -r --cached my_folder
+
+Github's gitignore templates are a very useful starting point.
+https://github.com/github/gitignore
+
+Licensing
+=========
+
+TODO
+review of licensing options, importantance, etc.
