@@ -7,10 +7,12 @@ Introduction
 
 | Git is a distributed version control system (VCS).
 
-| The purpose of a VCS is to document and preserve changes in files (most notably code) to facilitate development software.
+| The purpose of a VCS is to document and preserve changes in files
+(most notably code) to facilitate development software.
 
-The documentation aspect of VCS provides a medium to capture who made a change, what they changed, and for what purpose.
-Preservation of changes prevents data loss, and allows easily confirming software behavior between versions.
+The documentation aspect of VCS provides a medium to capture who made a change,
+what they changed, and for what purpose. Preservation of changes prevents data
+loss, and allows easily confirming software behavior between versions.
 
 A VCS extends the concept of saving a project beyond a singular view of its current state to capturing its history over time.
 The history of a git repository takes the shape of a tree, formed of instances of code changes called "commits".
@@ -49,19 +51,23 @@ It is necessary to configure your username and email because this information wi
 
 Essential Commands
 ==================
-| **git clone**: Clone an existing repository.
-| **git status**: Show the changes to files in a Git repository.
-| **git fetch**: Download objects and refs from another repository.
-| **git pull**: Fetch branch from a remote repository and merge it to local repository.
+| **git init**: Initialize a new local git repo.
+| **git clone**: Clone an existing repo.
+| **git status**: Show the changes to files in a Git repo.
+| **git add**: Track/stage changes.
+| **git rm**: Untrack files and delete them.
+| **git checkout**: Switch branches or restore working tree files
+| **git reset**: Undo commits or unstage changes.
+| **git restore**: Restore working tree files.
+| **git fetch**: Download objects and refs from another repo.
+| **git pull**: Fetch branch from a remote repository and merge it to local repo.
 | **git push**: Push commits to a remote repository.
 | **git merge**: Merge Branches.
 | **git rebase**: Reapply commits from one branch on top of another branch.
-| **git checkout**: Switch branches or restore working tree files
 | **git diff**: Show changes between commits, commit and working tree, etc.
 | **git branch**: List, create, or delete branches.
 | **git switch**: Switch between Git branches.
 | **git log**: Show a history of commits.
-| **git reset**: Undo commits or unstage changes.
 
 
 Creating a New Repository
@@ -97,10 +103,22 @@ Pushing to a Remote
    # Check status of current repository
    $ git status
    # Stage changes
-   $ git add <FILENAME_1> <FILENAME_2> <FOLDER_NAME>/<FILENAME_3> ...
-   $ git rm <FILENAME_4> ...
+   $ git add <FILENAME> <FILENAME> <FOLDER_NAME>/<FILENAME> ...
+   # Return a file to its unmodified state with checkout or restore
+   $ git checkout -- <FILENAME>
+   $ git restore <FILENAME>
+   # Untrack a file but preserve it locally
+   git rm --cached <FILENAME>
+   # Untrack a file and delete it locally
+   git rm <FILENAME>
+   # Unstage a file with reset or restore
+   $ git reset HEAD <FILENAME>
+   $ git restore --staged <FILENAME>
    # Commit changes
    $ git commit -m "<COMMIT_MESSAGE>"
+   # If you realize that you made a mistake in your commit you can revise it
+   git add <FILENAME_5>
+   git commit --amend -m "<REVISED_COMMIT_MESSAGE>"
    # Push changes
    $ git push origin main
    # confirm status
