@@ -349,6 +349,11 @@ The Purpose of Package Management
 Package Management on Ubuntu
 ----------------------------
 
+TODO
+
+To search for a package:
+apt-cache search <KEYWORD>
+
 Types of Packages on Ubuntu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

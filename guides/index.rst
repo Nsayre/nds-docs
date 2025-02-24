@@ -8,3 +8,4 @@ Guides
    Command-Line-Linux
    Git
    Python
+   Data-Science
