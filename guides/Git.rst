@@ -14,38 +14,55 @@ The documentation aspect of VCS provides a medium to capture who made a change,
 what they changed, and for what purpose. Preservation of changes prevents data
 loss, and allows easily confirming software behavior between versions.
 
-A VCS extends the concept of saving a project beyond a singular view of its current state to capturing its history over time.
-The history of a git repository takes the shape of a tree, formed of instances of code changes called "commits".
+A VCS extends the concept of saving a project beyond a singular view of its
+current state to capturing its history over time.
+The history of a git repository takes the shape of a tree, formed of instances
+of code changes called "commits".
 
-The structure of the history of a git repository forms a tree, which traces a line from the creation of the repository to the end of each branch, which is called a "head".
+The structure of the history of a git repository forms a tree, which traces a
+line from the creation of the repository to the end of each branch, which is
+called a "head".
 
-Version control systems are essential for modern collaborative software development.
+Version control systems are essential for modern collaborative software
+development.
 
 Git Hosting Services
 ^^^^^^^^^^^^^^^^^^^^
-Github and Gitlab are examples of services that host git repositories and provide additional features. Despite not being affiliated with the original git project, they provide cloud hosting of repositories and useful features.
+Github and Gitlab are examples of services that host git repositories and
+provide additional features. Despite not being affiliated with the original
+git project, they provide cloud hosting of repositories and useful features.
 
-Git hosting services provide notable features such as pull requests, issue tracking, and project management that facilitate project collaboration.
+Git hosting services provide notable features such as pull requests, issue
+tracking, and project management that facilitate project collaboration.
 
 Most software development with git occurs via a hosting service.
 
 Terminology
 ^^^^^^^^^^^
-| **Remote Repo**: A git repo hosted elsewhere (Could be Github, could be elsewhere on your machine).
-| **Commit**: A unit of code-change that advances Git history. Commits should be a cohesive change to code, and should include messages that describe the scope of the change and potentially its purpose.
-| **Staging**: Selecting changes to be committed.
+**Remote Repo**: A git repo hosted elsewhere (Could be Github,
+could be elsewhere on your machine).
+
+**Origin**: The default name for a repo that you cloned from.
+
+**Commit**: A unit of code-change that advances Git history.
+Commits should be a cohesive change to code, and should include messages that
+describe the scope of the change and potentially its purpose.
+
+**Staging**: Selecting changes to be committed.
 
 Setup
 ^^^^^
 Git has configuration at the system, user, and repository level.
-It is necessary to configure your username and email because this information will be tied to your commit history.
+It is necessary to configure your username and email because this information
+will be tied to your commit history.
 
 .. code-block:: text
 
    # Set git username and email globally
    $ git config --global user.name "<FULL_NAME>"
    $ git config --global user.email <EMAIL_ADDRESS>
-   # Optionally you may want to specify the default text editor for commit messages or the default branch name
+   # Optionally you may want to specify the default text editor for commit
+   # messages or the default branch name
    $ git config --global core.editor nvim
    $ git config --global init.defaultBranch main
 
@@ -68,11 +85,12 @@ Essential Commands
 | **git branch**: List, create, or delete branches.
 | **git switch**: Switch between Git branches.
 | **git log**: Show a history of commits.
-
+| **git remote**: Manage set of tracked repos.
 
 Creating a New Repository
 =========================
-The following is the canonical way to capture the current state of a directory as a new git repo:
+The following is the canonical way to capture the current state of a directory
+as a new git repo:
 
 .. code-block:: text
 
@@ -83,7 +101,8 @@ The following is the canonical way to capture the current state of a directory a
 
 Cloning an Existing Repository from a Hosting Service
 =====================================================
-Cloning can be performed via HTTPS or SSH protocols. Cloning will create a folder with the title of the repo in the directory it is performed in.
+Cloning can be performed via HTTPS or SSH protocols. Cloning will create a
+folder with the title of the repo in the directory it is performed in.
 
 .. code-block:: text
 
@@ -93,7 +112,8 @@ Cloning can be performed via HTTPS or SSH protocols. Cloning will create a folde
    # SSH form:
    $ git clone git@github.com:<USERNAME>/<REPO_NAME>.git
 
-Authentication may be required depending upon the repository. For HTTPS this takes the form of a username and password, for SSH it means a SSH key.
+Authentication may be required depending upon the repository. For HTTPS this
+takes the form of a username and password, for SSH it means a SSH key.
 
 Pushing to a Remote
 ===================
@@ -145,17 +165,23 @@ Pulling in Changes
 
 Git pull is actually a git fetch followed by a git merge.
 
-The fetch operation gathers the latest changes from the remote, and the merge operation integrates them into the local repo.
+The fetch operation gathers the latest changes from the remote, and the merge
+operation integrates them into the local repo.
 
 Merging can result in merge commits when the condition of two branches
 
-Merging an outdated version of a branch, with its updated version, occurs as a "fast-forward" merge.
+Merging an outdated version of a branch, with its updated version, occurs as a
+"fast-forward" merge.
 Fast-forwarded merges do not add a merge commit
 
-New commit history is appended to the outdated version and it advances through time. If you clone a repo and make no changes to it, and then other developers advance the main branch of that repo numerous times, a git pull operation will simply update your local repo to
+New commit history is appended to the outdated version and it advances through
+time. If you clone a repo and make no changes to it, and then other developers
+advance the main branch of that repo numerous times, a git pull operation will
+simply update your local repo to
 
 
-In the case where there have been no deviating changes to the local branch, a git pull simply updates the local branch to same condition as the remotes.
+In the case where there have been no deviating changes to the local branch, a
+git pull simply updates the local branch to same condition as the remotes.
 
 However
 
