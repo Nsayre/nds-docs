@@ -5,34 +5,57 @@ Python
 Introduction
 ============
 
-TODO description of what Python is, and where it stands next to other langs
+Python is a high-level, general-purpose programming language.
+It has excellent libraries that span a wide variety of  applications, and is
+based on a philosophy that values readability and simplicity.
+
+As a high-level programming language, it sacrifices performance and control for
+simplicity and development productivity.
 
 Types
-=====
+==========
 
-TODO revisit, maybe delete
-
-Essentially everything in Python is an object, and every object has a type.
+Everything in Python is an object (in essence), and every object has a type.
 
 Python's type function will return the type of an object. Here we use it to
 exhibit python's built-in types.
 
->>> print(type(True), type(False))
-<class 'bool'> <class 'bool'>
+Numeric Types
+^^^^^^^^^^^^^
+
+**int**: Mathematical integer.
+
 >>> type(3)
 <class 'int'>
+
+**float**: Floating-point number.
+
 >>> type(3.14)
 <class 'float'>
+
+**complex**: Mathematical complex number.
+
 >>> type(2+1j)
 <class 'complex'>
->>> type(None)
-<class 'NoneType'>
+
+
+
+
+**bool**: Boolean value.
+
+>>> print(type(True), type(False))
+<class 'bool'> <class 'bool'>
+
+**string**: A string of characters.
+
 >>> type("word")
 <class 'str'>
 
-**Bool**: True or False
-**int**: Integer
+**None**/**NoneType**: None is the null object, and NoneType its type. None
+represents the absence of a value.
 
+>>> type(None)
+<class 'NoneType'>
 
 Data Structures
 ===============
@@ -55,7 +78,7 @@ Lists
    # Lists may be nested
    list_twodim = [[1, 2, 3], [4, 5, 6]]
 
-All iterables in python are zero-indexed. Values in lists can be read or
+All iterables in Python are zero-indexed. Values in lists can be read or
 reassigned from their index.
 
 >>> list_simple[0]
