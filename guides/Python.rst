@@ -2,106 +2,100 @@
 Python
 ======
 
-Introduction
-============
+Purpose
+=======
 
-Python is a high-level, general-purpose programming language.
-It has excellent libraries that span a wide variety of  applications, and is
-based on a philosophy that values readability and simplicity.
+Python has excellent documentation, and there are already countless blogs and
+guides on Python. However, I still see an opportunity for guides to be more
+condensed and practical.
 
-As a high-level programming language, it sacrifices performance and control for
-simplicity and development productivity.
+I hope these guides are useful and educational.
 
-Types
-==========
-
-Everything in Python is an object (in essence), and every object has a type.
-
-Python's type function will return the type of an object. Here we use it to
-exhibit python's built-in types.
-
-Numeric Types
-^^^^^^^^^^^^^
-
-**int**: Mathematical integer.
-
->>> type(3)
-<class 'int'>
-
-**float**: Floating-point number.
-
->>> type(3.14)
-<class 'float'>
-
-**complex**: Mathematical complex number.
-
->>> type(2+1j)
-<class 'complex'>
-
-
-
-
-**bool**: Boolean value.
-
->>> print(type(True), type(False))
-<class 'bool'> <class 'bool'>
-
-**string**: A string of characters.
-
->>> type("word")
-<class 'str'>
-
-**None**/**NoneType**: None is the null object, and NoneType its type. None
-represents the absence of a value.
-
->>> type(None)
-<class 'NoneType'>
-
-Data Structures
+Pythonic Python
 ===============
+
+"Pythonic" Python is written in a way that the developers and the community
+consider to be idiomatic.
+
+Writing idiomatic code is important for two reasons:
+
+* **Clarity**: By following conventions, you make your Python code
+  easier to read, debug, and modify. This Fosters collaboration and improves
+  productivity.
+* **Performance**: Effort has been put into optimizing idiomatic Python, so
+  writing Python in an idiomatic way is simply faster in many cases.
+
+The Zen of Python attempts to define first principles in the philosophy of
+Python.
+https://legacy.python.org/dev/peps/pep-0020/
+
+What can we do to write more Pythonic code?
+
+We can follow guidelines where present, and otherwise regularly reconsider
+our approach.
+
+PEP8
+^^^^
+
+PEP8 represents the current guidelines to writing 
+
+TODO PEP8, linting, formatting, and what it doesn't cover
+
+Choosing, Creating, and Manipulating Objects
+============================================
+
+It is necessary to consider the type of objects in order to write clear and
+performant Python. There are many ways to achieve the same result in
+programming, however not all of those ways are equally intuitive or performant.
+
+The benefit of performance is obvious, however the benefit of intuitiveness is
+sometimes understated. The intuitiveness of code is valuable whenever code must
+be read and understood by others.
+
+Therefore it is important to know the built-in types and understand when and
+how they should be used, as well as how to create your own classes when the
+need arises.
+
+.. note::
+
+   Built-in functions and methods are implemented in C, making them much faster
+   than an equivalent solution in Python. Therefore they should be used when
+   possible. One good way to build awareness of built-in functions and methods
+   is to consider whether there is a built-in function or method that
+   could implement the desired functionality whenever we write as new function.
+   Searching through auto-complete options for functions or methods and reading
+   their documentation in an IDE is an excellent way to build familiarity
+   through practice. Memorizing them before needing to use them is likely
+   unnecessary preoptimization.
 
 Lists
 ^^^^^
-* Data structure for data that is expected to change
 * Mutable
 * Ordered
 
 .. code-block:: python
 
    list_len0 = []
-   list_simple = [1,2,3]
+   list_simple = [1, 2, 3]
    # Lists are mutable, therefore they can be changed after assignment
    # Here we reassign the value in the 0th index of our list to a new value
    list_simple[0] = "new value"
    # Lists may contain mixed data types
    list_mixed = [True, 1.2, 8, "Hi"]
    # Lists may be nested
-   list_twodim = [[1, 2, 3], [4, 5, 6]]
+   # Nested lists
+   list_nested = [[1, 2, 3], [4, 5, 6]]
+   # List comprehensions
+   list_comp = [x for x in range(3)]
+   TODO
+   list_comp_nested = [x for x in range(3)]
+   # List slicing
 
-All iterables in Python are zero-indexed. Values in lists can be read or
-reassigned from their index.
-
->>> list_simple[0]
-1
->>> list_simple[0] = "something else"
->>> list_simple[0]
-'something else'
-
-As with other iterables, care must be taken not to attempt to index outside of
-an iterables range. Attempting this results in an IndexError.
-
->>> list_simple[5]
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-IndexError: list index out of range
-
-The usefulness of lists come from their versatility.
-They should be used whenever you have a group of data that needs to change
-after assignment, where there is no unique identifier for the values.
+Lists are flexible due to their lack of restrictions. You could say that a list
+should be used whenever there are no compelling reasons to use other types.
 
 Tuples
 ^^^^^^
-* Data structure for data that should not change after assignment
 * Immutable
 * Ordered
 
@@ -128,7 +122,7 @@ Traceback (most recent call last):
 TypeError: 'tuple' object does not support item assignment
 
 Tuples excel at representing fixed data structures where length, order, and
-content does not change after assignment. Tuples not only protect data that
+content do not change after assignment. Tuples not only protect data that
 should not change, but operations involving tuples execute faster due to their
 simpler nature. Because of this, it is advantageous to use tuples when
 appropriate.
@@ -171,7 +165,10 @@ OrderedDict class is a more appropriate choice.
 
 Sets
 ^^^^
-* Collection of unique items that excels at testing membership
+* Collection of unique items that excels at exctracting unique values and
+  testing membership
+* Concepts such as order, index, and slicing have no meaning with regards to a
+  set.
 * Mutable
 * Unordered
 
@@ -182,36 +179,32 @@ Sets
 
    set_simple = {1, 2, 3}
 
-Concepts such as order, index, and slicing have no meaning with regards to a
-set.
+Slicing
+^^^^^^^
 
-Like the mathematical concept on which they are based, sets are groups of
-unique values. They are useful for extracting unique values from other data
-types and testing membership. Various mathematical set operations are
-available.
+Comprehensions & Generators
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Iterators, Generators
-=====================
+Packages & Virtual Environments
 
-TODO
+OS/Path/File ops
 
-Comprehensions
-==============
+Debugging
+
+Clean Code with PEP8
+
+Testing, errors, exceptions, logging
+
+Test driven development and when not to
+
+Benchmarking/performance/profiling
+
 
 Control Flow
 ============
 
 TODO, is control flow the right name?
 
-if statements
-^^^^^^^^^^^^^
-
-for statements
-^^^^^^^^^^^^^^
-
-while statements
-
-functions
 
 Keyword arguments
 positional and keyword arguments (args, kwargs)
@@ -222,17 +215,8 @@ lists may be indexed until their length - 1.
 Negative indexes start at the end of the list and work forwards.
 An iterable may be "sliced" in order to refer to specific indexes.
 
-
-importing
-^^^^^^^^^
-TODO actually part of control flow?
-
 Debugging
 =========
-
-
-Virtual Environments
-====================
 
 Setting up venv
 ===============
