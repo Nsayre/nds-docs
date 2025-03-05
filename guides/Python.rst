@@ -29,15 +29,24 @@ The Zen of Python attempts to define first principles in the philosophy of
 Python.
 https://legacy.python.org/dev/peps/pep-0020/
 
-What can we do to write more Pythonic code?
+What can we do to make our code more Pythonic?
 
 We can follow guidelines where present, and otherwise regularly reconsider
-our approach.
+our approach as we learn from and analyze the code of others.
 
 PEP8
 ^^^^
 
-PEP8 represents the current guidelines to writing 
+PEP8 represents official Python coding conventions. Although it is a style
+guide, it is notably extremely explicit that it does not represent rules for
+the sake of rules. Rather, it defines general guidelines that broadly can be
+considered good practice, and leaves the exact implementation at the
+discretion of the developer.
+
+In order to understand when rules should be broken, we have to first understand
+them.
+
+
 
 TODO PEP8, linting, formatting, and what it doesn't cover
 
@@ -186,18 +195,25 @@ Comprehensions & Generators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Packages & Virtual Environments
+===============================
 
 OS/Path/File ops
+===============================
 
 Debugging
+===============================
 
 Clean Code with PEP8
+===============================
 
 Testing, errors, exceptions, logging
+===============================
 
 Test driven development and when not to
+===============================
 
 Benchmarking/performance/profiling
+==================================
 
 
 Control Flow
