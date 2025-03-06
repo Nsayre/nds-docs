@@ -4,7 +4,6 @@ Python
 
 Purpose
 =======
-
 Python has excellent documentation, and there are already countless blogs and
 guides on Python. However, I still see an opportunity for guides to be more
 condensed and practical.
@@ -20,13 +19,14 @@ consider to be idiomatic.
 Writing idiomatic code is important for two reasons:
 
 * **Clarity**: By following conventions, you make your Python code
-  easier to read, debug, and modify. This Fosters collaboration and improves
-  productivity.
+  easier to read, debug, and modify. This facilitates collaboration and
+  improves productivity.
 * **Performance**: Effort has been put into optimizing idiomatic Python, so
   writing Python in an idiomatic way is simply faster in many cases.
 
 The Zen of Python attempts to define first principles in the philosophy of
 Python.
+
 https://legacy.python.org/dev/peps/pep-0020/
 
 What can we do to make our code more Pythonic?
@@ -37,16 +37,35 @@ our approach as we learn from and analyze the code of others.
 PEP8
 ^^^^
 
-PEP8 represents official Python coding conventions. Although it is a style
-guide, it is notably extremely explicit that it does not represent rules for
-the sake of rules. Rather, it defines general guidelines that broadly can be
-considered good practice, and leaves the exact implementation at the
-discretion of the developer.
+PEP8 defines coding conventions for Python code in its standard library.
+Although it doesn't tell the community how to write Python outside of its
+library. In practice it is broadly applied and widely accepted.
+
+Although it is a long list of conventions, it is notably extremely explicit
+that it does not represent rules for the sake of rules. Rather, it defines
+general guidelines that broadly can be considered good practice, and leaves
+the exact implementation at the discretion of the developer.
 
 In order to understand when rules should be broken, we have to first understand
 them.
 
+Linting & Formatting
+^^^^^^^^^^^^^^^^^^^^
 
+Linting is another term for static code checking, and a code formatter
+automatically formats code for you (usually to comply with guidelines). Linting
+isn't limited to style however, it can also detect syntactic issues.
+
+Although PEP8 is relatively brief, that doesn't mean that memorizing all of its
+aspects is easy or worthwhile. Being caught up with minor formatting can
+negatively impact productivity, and we can recognize times when all of our
+efforts should be focused on getting something to work, rather than chasing
+some elusive concept of what is "optimal".
+
+There are a variety of tools that can check for PEP8 compliance, and even
+automatically enforce it.
+
+Linting means static code checking.
 
 TODO PEP8, linting, formatting, and what it doesn't cover
 
