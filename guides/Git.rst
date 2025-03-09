@@ -53,8 +53,8 @@ describe the scope of the change and potentially its purpose.
 Setup
 ^^^^^
 Git has configuration at the system, user, and repository level.
-It is necessary to configure your username and email because this information
-will be tied to your commit history.
+Initially it is necessary to configure your username and email because this
+information will be tied to your commit history.
 
 .. code-block:: text
 
@@ -68,24 +68,36 @@ will be tied to your commit history.
 
 Essential Commands
 ==================
+
+Repository Creation and Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | **git init**: Initialize a new local git repo.
 | **git clone**: Clone an existing repo.
+| **git remote**: Manage set of tracked repos.
+
+Repository Status
+^^^^^^^^^^^^^^^^^
 | **git status**: Show the changes to files in a Git repo.
+| **git log**: Show a history of commits.
+
+Commit History Operations
+^^^^^^^^^^^^^^^^^^^^^^^^^
 | **git add**: Track/stage changes.
 | **git rm**: Untrack files and delete them.
-| **git checkout**: Switch branches or restore working tree files
 | **git reset**: Undo commits or unstage changes.
 | **git restore**: Restore working tree files.
 | **git fetch**: Download objects and refs from another repo.
+| **git merge**: Merge Branches.
 | **git pull**: Fetch branch from a remote repository and merge it to local repo.
 | **git push**: Push commits to a remote repository.
-| **git merge**: Merge Branches.
 | **git rebase**: Reapply commits from one branch on top of another branch.
 | **git diff**: Show changes between commits, commit and working tree, etc.
+
+Branching
+^^^^^^^^^
 | **git branch**: List, create, or delete branches.
+| **git checkout**: Switch branches or restore working tree files
 | **git switch**: Switch between Git branches.
-| **git log**: Show a history of commits.
-| **git remote**: Manage set of tracked repos.
 
 Creating a New Repository
 =========================
@@ -144,14 +156,32 @@ Pushing to a Remote
    # confirm status
    $ git status
 
-Branches
-========
+Branching
+=========
 
-TODO read Git branching tab
+It is considered best practice to keep the main branch of a repo in a clean and
+working state. This makes sense since it represents the most stable and
+complete version of the codebase. When that main branch is running in
+production there is clearly no room for unexpected changes.
 
-A branch is a sequence of commits over time that carry a common theme.
-Every repository has a main/master branch
+To add changes (features or fixes), a new branch is made off of
+main, and that branch is later merged when the change is complete and the code
+has been reviewed.
 
+Branches are quickly and easily created and destroyed. Developers should feel
+free to create branches and experiment freely within them.
+
+.. code-block:: text
+
+   # Create new branch
+   $ git branch <BRANCH_NAME>
+   # Switch to a branch
+   $ git checkout <BRANCH_NAME>
+   # Create a new branch and switch to it
+   $ git switch -c <BRANCH_NAME>
+
+TODO git switch vs. checkout
+TODO other duplicitous git commands
 
 Pulling in Changes
 ==================
@@ -214,7 +244,7 @@ You can imagine merging as the two branches of a tree growing into each other to
    # Rebasing can be performed instead of the default merging behavior
    $ git pull --rebase
 
-Merging vs. Rebasing
+Merging & Rebasing
 ^^^^^^^^^^^^^^^^^^^^
 
 When a branch has served its purpose and it is time to integrate its changes, it can either be merged or rebased.
@@ -230,14 +260,6 @@ rebase
 merge
 pull
 
-
-Rebasing and Merging
-^^^^^^^^^^^^^^^^^^^^
-
-
-Branching
-^^^^^^^^^
-TODO
 
 Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -270,7 +292,7 @@ TODO
 Commit Messages
 ^^^^^^^^^^^^^^^
 
-TODO 
+TODO
 
 Clear and concise commit messages make approving pull requests easier and facilitate collaborative development. Here are some general guidelines to keep messages clear and concise.
 
