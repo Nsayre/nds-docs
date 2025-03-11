@@ -69,19 +69,16 @@ information will be tied to your commit history.
 Essential Commands
 ==================
 
-Repository Creation and Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+| **Repository Creation and Configuration**:
 | **git init**: Initialize a new local git repo.
 | **git clone**: Clone an existing repo.
 | **git remote**: Manage set of tracked repos.
 
-Repository Status
-^^^^^^^^^^^^^^^^^
+| **Repository Status**:
 | **git status**: Show the changes to files in a Git repo.
 | **git log**: Show a history of commits.
 
-Commit History Operations
-^^^^^^^^^^^^^^^^^^^^^^^^^
+| **Commit History Operations**:
 | **git add**: Track/stage changes.
 | **git rm**: Untrack files and delete them.
 | **git reset**: Undo commits or unstage changes.
@@ -93,8 +90,7 @@ Commit History Operations
 | **git rebase**: Reapply commits from one branch on top of another branch.
 | **git diff**: Show changes between commits, commit and working tree, etc.
 
-Branching
-^^^^^^^^^
+| **Branching**:
 | **git branch**: List, create, or delete branches.
 | **git checkout**: Switch branches or restore working tree files
 | **git switch**: Switch between Git branches.
@@ -176,15 +172,29 @@ free to create branches and experiment freely within them.
    # Create new branch
    $ git branch <BRANCH_NAME>
    # Switch to a branch
-   $ git checkout <BRANCH_NAME>
+   $ git switch <BRANCH_NAME>
    # Create a new branch and switch to it
    $ git switch -c <BRANCH_NAME>
 
-TODO git switch vs. checkout
-TODO other duplicitous git commands
+Once a branch has served its purpose it may be merged into another branch. It
+is good practice to delete a branch after merging since it no longer is
+necessary due to its changes being integrated with another branch.
+
+.. code-block:: text
+
+   # Merge branch into main
+   $ git switch main
+   $ git merge new_feature_branch
+   # Delete branch
+   $ git branch -d new_feature_branch
 
 Pulling in Changes
 ==================
+
+When your local repository no longer has the latest commit history, you can
+use the git pull command to pull in the latest changes. It is a good idea to
+stay on top of pulling in the latest changes to make sure you aren't working
+with out of date files.
 
 .. code-block:: text
 
@@ -193,73 +203,46 @@ Pulling in Changes
    # Download changes from the remote and merge them
    $ git pull
 
-Git pull is actually a git fetch followed by a git merge.
+The git pull command actually runs a git fetch followed by a git merge.
 
 The fetch operation gathers the latest changes from the remote, and the merge
 operation integrates them into the local repo.
 
-Merging can result in merge commits when the condition of two branches
-
-Merging an outdated version of a branch, with its updated version, occurs as a
-"fast-forward" merge.
-Fast-forwarded merges do not add a merge commit
-
-New commit history is appended to the outdated version and it advances through
-time. If you clone a repo and make no changes to it, and then other developers
-advance the main branch of that repo numerous times, a git pull operation will
-simply update your local repo to
-
-
-In the case where there have been no deviating changes to the local branch, a
-git pull simply updates the local branch to same condition as the remotes.
-
-However
-
-
-
 Merging
+^^^^^^^
 
-When there are no deviating changes in the current branch, a git pull will simply update your current branch to latest version from the remote.
+The result of a merge can look different depending on the status of the
+branches that are being merged.
 
-However if your local branch has deviated from the remote, then a pull 
+If there is no divergent commit history, a "fast-forward merge" will occur, and
+commit history will be advanced without conflict, or creation of a new merge
+commit.
 
-If your local repo has never deviated from the commit history of the remote, then a "fast forward" merge will be performed, and the local will be updated to the remote without any changes to the commit history.
+If there is divergent non conflicting commit history, a three way merge will
+occur, where a merge commit will be created that will act as the point the two
+branches merge.
 
-However, if the local repo has deviated, then merging will include a merge commit that changes history and tracks where the two branches have combined.
+If there is divergent conflicting commit history, then a new merge commit will
+be created and the user will be required to resolve the conflict by specifying
+the exact status of the conflicting portion of files that will go into the new
+merge commit.
 
+Rebasing
+^^^^^^^^
 
+Rebasing allows moving one branch on top of another one. It is a way to alter
+commit history for clarity or convenience. However, unlike merging where commit
+history is never destroyed, rebasing opens the door to losing valuable history.
 
-
-Behind the scenes, git pull performs a fetch operation followed by a merge operation.
-While merge is the default, a rebase can instead be performed via the --rebase option. Merge operations do not alter previous commit history, they simply add a merge commit and combine branches. Rebasing allows altering the commit history, and moving one branch on top of another. 
-You can imagine merging as the two branches of a tree growing into each other to form a single branch. Rebasing can be imagined as cutting off a branch and attaching it to the tip of another.
-
-| Merging is always safe because it doesn't interfere with commit history. However, the additional commit that it adds can be unnecessary clutter.
-| Rebasing is useful in specific circumstances.
-
-.. code-block:: text
-
-   # Fetch gathers the latest changes from the remote and is the first part of a git pull command.
-   $ git fetch
-   # Rebasing can be performed instead of the default merging behavior
-   $ git pull --rebase
-
-Merging & Rebasing
+Merging vs. Rebasing
 ^^^^^^^^^^^^^^^^^^^^
 
-When a branch has served its purpose and it is time to integrate its changes, it can either be merged or rebased.
-The difference between merging and rebasing is in the structure of the commit history.
+Merging is always safe because it doesn't interfere with commit history.
+However, the additional commit that it adds can be unnecessary clutter.
 
-Once the time has come for branche
-When the time has come for 
-Merging 
-Once changes have been fetched they can be merged into 
-TODO
+Rebasing is useful in specific circumstances.
 
-rebase
-merge
-pull
-
+TODO more on merging vs. rebasing
 
 Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
