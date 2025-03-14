@@ -157,8 +157,8 @@ Branching
 
 It is considered best practice to keep the main branch of a repo in a clean and
 working state. This makes sense since it represents the most stable and
-complete version of the codebase. When that main branch is running in
-production there is clearly no room for unexpected changes.
+complete version of the codebase. If your main branch houses production code,
+then clearly there is no room for unexpected changes.
 
 To add changes (features or fixes), a new branch is made off of
 main, and that branch is later merged when the change is complete and the code
@@ -166,6 +166,23 @@ has been reviewed.
 
 Branches are quickly and easily created and destroyed. Developers should feel
 free to create branches and experiment freely within them.
+
+Branches can be "moved" which results in renaming them. However, in a
+collaborative environment this shouldn't be done without the permission of all
+developers using that branch, since it could cause confusion or disruption.
+
+.. code-block:: text
+
+   # List current branches
+   $ git branch
+   * main
+     old_feature_branch
+   # The asterisk indicates the branch that is currently active
+   # a -vv flag will show the latest commit hash
+   # and whether branches are ahead or behind
+   $ git branch -vv
+   # Fetch and show all branches verbosely
+   $ git fetch --all; git branch -vv
 
 .. code-block:: text
 
@@ -184,9 +201,27 @@ necessary due to its changes being integrated with another branch.
 
    # Merge branch into main
    $ git switch main
-   $ git merge new_feature_branch
-   # Delete branch
-   $ git branch -d new_feature_branch
+   $ git merge <BRANCH_NAME>
+   # Delete local branch
+   $ git branch -d <BRANCH_NAME>
+
+If the branch was never pushed to a remote, then the previous commands will be
+sufficient to delete it. However, it is actually a push command that allows
+deletion of a remote branch.
+
+.. code-block:: text
+
+   # Delete remote branch
+   $ git push -d <REMOTE> <BRANCH_NAME>
+
+Even if you delete a remote branch, and other collaborators fetch your changes,
+the obsolete branch will still exist in their repo until they execute a fetch
+command with the --prune flag.
+
+.. code-block:: text
+
+   # Delete all obsolete remote-tracking branches
+   $ git fetch <REMOTE> --prune
 
 Pulling in Changes
 ==================
@@ -211,12 +246,11 @@ operation integrates them into the local repo.
 Merging
 ^^^^^^^
 
-The result of a merge can look different depending on the status of the
-branches that are being merged.
+The result of a merge can look different depending on whether the changes are
+divergent and/or conflicting.
 
 If there is no divergent commit history, a "fast-forward merge" will occur, and
-commit history will be advanced without conflict, or creation of a new merge
-commit.
+commit history will be advanced without the creation of a merge commit.
 
 If there is divergent non conflicting commit history, a three way merge will
 occur, where a merge commit will be created that will act as the point the two
@@ -227,6 +261,11 @@ be created and the user will be required to resolve the conflict by specifying
 the exact status of the conflicting portion of files that will go into the new
 merge commit.
 
+.. code-block:: text
+
+   # Merge specified branch into active branch
+   $ git merge <BRANCH_NAME>
+
 Rebasing
 ^^^^^^^^
 
@@ -234,15 +273,34 @@ Rebasing allows moving one branch on top of another one. It is a way to alter
 commit history for clarity or convenience. However, unlike merging where commit
 history is never destroyed, rebasing opens the door to losing valuable history.
 
+.. code-block:: text
+
+   $ git switch <BRANCH_TO_REBASE>
+   # Rebase current active branch onto specified branch
+   $ git rebase <BRANCH_TO_REBASE_ONTO>
+   First, rewinding head to replay your work on top of it...
+   Applying: added staged command
+
 Merging vs. Rebasing
 ^^^^^^^^^^^^^^^^^^^^
 
-Merging is always safe because it doesn't interfere with commit history.
-However, the additional commit that it adds can be unnecessary clutter.
+Merging is always safe because it doesn't alter previous commit history.
+However, the additional commit that it adds can be seen as unnecessary clutter.
 
-Rebasing is useful in specific circumstances.
+Rebasing can make very clean commits, because it can make work that occurred in
+parallel appear to have happened linearly.
 
-TODO more on merging vs. rebasing
+However, rebasing should never be performed on commits that have left your
+local repo, because they will alter the history that everyone that works with
+that repo sees, and potentially force them to do additional work to reconcile
+with the new history you have created.
+
+Which you use depends on best practices and the philosophy of the project.
+The best practices dictate the previous rule that rebasing should only be
+performed on commits that you and only you have touched. If you believe that
+commit history should reflect absolute history as it occurred, then rebasing
+may not be preferred. However if you believe that minor discrepencies are worth
+the added clarity then you may rebase often.
 
 Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
