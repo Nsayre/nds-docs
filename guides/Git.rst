@@ -95,6 +95,10 @@ Essential Commands
 | **git checkout**: Switch branches or restore working tree files
 | **git switch**: Switch between Git branches.
 
+| **Repository Tidying**:
+| **git stash**: Stash local changes in a temporary area.
+| **git clean**: Revove files not tracked by git.
+
 Creating a New Repository
 =========================
 The following is the canonical way to capture the current state of a directory
@@ -306,6 +310,22 @@ Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 TODO
 
+
+Stashing Work
+^^^^^^^^^^^^^
+
+If you want to switch branches while in the middle of work, you may stash the
+state of your current branch so that you can revisit it later.
+
+.. code-block:: text
+
+   # Stash current working directory
+   $ git stash
+   # View list of stashes
+   $ git stash list
+   # Revert to stashed state
+   $ git stash apply
+
 Uploading an Existing Repo to Github
 ====================================
 
@@ -326,24 +346,21 @@ gh repo create
 Best Practices and Etiquette
 ============================
 
-README
-^^^^^^
-TODO
-
 Commit Messages
 ^^^^^^^^^^^^^^^
 
-TODO
+Commits should focus on a single issue, and their messages should be clear
+and concise. The first line should be a summary, that describes the purpose in
+50 characters or less.
 
-Clear and concise commit messages make approving pull requests easier and facilitate collaborative development. Here are some general guidelines to keep messages clear and concise.
+If the first line isn't sufficient to describe the change, then it can be
+followed with a blank line and a more detailed description. The details could
+describe what was changed, and how it was achieved. Since the purpose of this
+message is collaboration and posterity, it should make sense in the context
+of developer reviewing the changes. It should be written in the imperative mood
+, as in "Fix", not "Fixed" or "Fixes". Related issues can be referenced in the
+following way: "Fix login bug (#49)"
 
-The first line should be a short summary, like a headline, that describes the purpose of the commit. Ideally it is 50 characters or fewer.
-
-If the first line does not adequately describe the changes, then it should be followed by a blank line and a longer detailed description. The detailed description can add detail to the purpose, as well as elaborate on how it was achieved. It can also include any information that would be helpful to reviewers or contributors that will be viewing the message.
-
-All parts of the message should be written in the imperative mood. Example: "Fix typo in README". The main verbs in the imperative mood are in the present tense, unlike non-imperative mood messages like "Fixed typo in README". Imperative mood messages read as if they are commands to achieve what has been done.
-
-Commit messages should include references to relevant issues or tasks. Example: "Fix login validation bug (#123)
 
 Squashing Commits? something like that
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -380,6 +397,20 @@ In order to stop git from tracking a folder that was previously tracked that you
 
 Github's gitignore templates are a very useful starting point.
 https://github.com/github/gitignore
+
+README and CONTRIBUTING Files
+=============================
+
+A README file can be includedin a repository to indicate
+* Project purpose
+* Installation instructions
+* Guide to running/configuring the project
+* Software license information
+* Instructions for contributing
+
+A CONTRIBUTING file acts as a template for pull requests, giving a way to
+convey preferences whenever someone opens a new pull request on your repository
+.
 
 Licensing
 =========
