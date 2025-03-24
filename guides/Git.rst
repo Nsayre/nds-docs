@@ -227,8 +227,8 @@ command with the --prune flag.
    # Delete all obsolete remote-tracking branches
    $ git fetch <REMOTE> --prune
 
-Pulling in Changes
-==================
+Pulling in Changes from the Remote
+==================================
 
 When your local repository no longer has the latest commit history, you can
 use the git pull command to pull in the latest changes. It is a good idea to
@@ -248,7 +248,7 @@ The fetch operation gathers the latest changes from the remote, and the merge
 operation integrates them into the local repo.
 
 Merging
-^^^^^^^
+=======
 
 The result of a merge can look different depending on whether the changes are
 divergent and/or conflicting.
@@ -271,7 +271,7 @@ merge commit.
    $ git merge <BRANCH_NAME>
 
 Rebasing
-^^^^^^^^
+========
 
 Rebasing allows moving one branch on top of another one. It is a way to alter
 commit history for clarity or convenience. However, unlike merging where commit
@@ -286,7 +286,7 @@ history is never destroyed, rebasing opens the door to losing valuable history.
    Applying: added staged command
 
 Merging vs. Rebasing
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 Merging is always safe because it doesn't alter previous commit history.
 However, the additional commit that it adds can be seen as unnecessary clutter.
@@ -306,13 +306,14 @@ commit history should reflect absolute history as it occurred, then rebasing
 may not be preferred. However if you believe that minor discrepencies are worth
 the added clarity then you may rebase often.
 
+
 Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 TODO
 
 
 Stashing Work
-^^^^^^^^^^^^^
+=============
 
 If you want to switch branches while in the middle of work, you may stash the
 state of your current branch so that you can revisit it later.
@@ -361,11 +362,42 @@ of developer reviewing the changes. It should be written in the imperative mood
 , as in "Fix", not "Fixed" or "Fixes". Related issues can be referenced in the
 following way: "Fix login bug (#49)"
 
+Changing History
+^^^^^^^^^^^^^^^^
 
-Squashing Commits? something like that
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Generally git commit history should only ever be changed when those changes
+only exist on your local computer. Changing git history of a remote will change
+the history for many others, and will create pointless work in order to resolve
+.
 
-TODO
+.. code-block:: text
+
+   # Replace the last commit message
+   $ git commit --amend
+   # The most recent commit will be replaced, and its SHA-1 hash updated
+   # Use the interactive mode of the git rebase command for more flexible
+   # editing of history
+   $ git rebase -i
+   # Squashing a feature branch during merging
+   $ git checkout main
+   $ git merge --squash <BRANCH_TO_SQUASH>
+
+Squashing
+^^^^^^^^^
+
+Commit history can be squashed to condense multiple commits into a single
+commit. This is useful when writing a feature branch, to condense a longer
+history of commits into a single cohesive commit for a clean history. Generally
+this is considered good practice. Squashing, like rebasing alters commit
+history so is only viable for local branches. Feature branches can first be
+rebased onto the latest history of main, before squashing for the cleanest
+and simplest commit history.
+
+.. code-block:: text
+
+   # Squash
+   $ git stash
+   # View list of stashes
 
 Ignoring Files with .gitignore
 ==============================
