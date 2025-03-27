@@ -70,6 +70,7 @@ Essential Commands
 ==================
 
 | **Repository Creation and Configuration**:
+| **git config**: Manage git configuration.
 | **git init**: Initialize a new local git repo.
 | **git clone**: Clone an existing repo.
 | **git remote**: Manage set of tracked repos.
@@ -84,7 +85,6 @@ Essential Commands
 | **git reset**: Undo commits or unstage changes.
 | **git restore**: Restore working tree files.
 | **git fetch**: Download objects and refs from another repo.
-| **git merge**: Merge Branches.
 | **git pull**: Fetch branch from a remote repository and merge it to local repo.
 | **git push**: Push commits to a remote repository.
 | **git rebase**: Reapply commits from one branch on top of another branch.
@@ -93,6 +93,7 @@ Essential Commands
 | **Branching**:
 | **git branch**: List, create, or delete branches.
 | **git checkout**: Switch branches or restore working tree files
+| **git merge**: Merge Branches.
 | **git switch**: Switch between Git branches.
 
 | **Repository Tidying**:
@@ -270,6 +271,14 @@ merge commit.
    # Merge specified branch into active branch
    $ git merge <BRANCH_NAME>
 
+Merging can always be aborted if one wasn't expecting conflicts or realized
+they had made a mistake.
+
+.. code-block:: text
+
+   # Abort as merge
+   $ git merge --abort
+
 Rebasing
 ========
 
@@ -309,8 +318,42 @@ the added clarity then you may rebase often.
 
 Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-TODO
+If two branches have conflicting changes, they cannot be merged without
+specifying which branches changes to include in the merge commit. Conflicts can
+be manually resolved by editing conflicting files line-by-line.
 
+
+.. code-block:: text
+
+   # Manually resolving conflicts:
+   $ git switch main
+   $ git merge <BRANCH_TO_MERGE>
+   CONFLICT (content): Merge conflict in <FILENAME>
+   Automatic merge failed; fix conflicts and then commit the result.
+   # Edit line by line, removing undesired changes
+   $ vim <FILENAME>
+   $ git add <FILENAME>
+   $ git commit -m "Resolved merge conflict in <FILENAME>"
+
+Alternatively, one of the branches may be chosen to resolve the merge. Where
+there are conflicts, the chosen branches version will be selected for the merge
+commit.
+
+.. code-block:: text
+
+   # Resolving conflicts by favoring a branch:
+   $ git switch main
+   $ git merge <BRANCH_TO_MERGE>
+   CONFLICT (content): Merge conflict in <FILENAME>
+   Automatic merge failed; fix conflicts and then commit the result.
+   # "ours" and "theirs" terminology is used. Since the perspective is from
+   # the main branch, "ours" will mean the main branches version.
+   $ git checkout --ours <FILENAME>
+   $ git add <FILENAME>
+   $ git commit -m "Resolved merge conflict in <FILENAME>"
+
+The git mergetool command, or IDEs built in tools (like VS Code) can be used
+for more sophisticated manual merging.
 
 Stashing Work
 =============
@@ -402,12 +445,15 @@ and simplest commit history.
 Ignoring Files with .gitignore
 ==============================
 
-Often a codebase will rely on files that are not code, yet are considerably large. 
-Since these files do not need to be tracked as closely as code, it is safe to ignore them and provide alternate means to acquire them.
-Once files are >1MB it is wise to start considering whether they really need to be tracked.
+Often a codebase will rely on files that are not code, yet are considerably
+large. Since these files do not need to be tracked as closely as code, it is
+safe to ignore them and provide alternate means to acquire them.
+Once files are >1MB it is wise to start considering whether they really need
+to be tracked.
 
 Ignoring files can be managed in git with the .gitignore file.
-the .gitignore file is a file placed in your repository that specifies patterns of files to be ignored by git.
+the .gitignore file is a file placed in your repository that specifies patterns
+of files to be ignored by git.
 
 .. code-block:: text
 
@@ -421,7 +467,8 @@ the .gitignore file is a file placed in your repository that specifies patterns 
    # Make an exception to a previous pattern to specify a file not to ignore
    !data/.config
 
-In order to stop git from tracking a folder that was previously tracked that you would like to ignore:
+In order to stop git from tracking a folder that was previously tracked that
+you would like to ignore:
 
 .. code-block:: text
 
