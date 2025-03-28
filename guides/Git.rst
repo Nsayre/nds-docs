@@ -2,26 +2,30 @@
 Git
 ***
 
+Purpose
+============
+
+These notes demonstrate common git operations with real commands, and provide
+some general best practices.
+This is my attempt to distill what is most important to know regarding git.
+I hope for it to be helpful to myself and to others.
+
 Introduction
 ============
 
-| Git is a distributed version control system (VCS).
+Git is a distributed version control system (VCS). The purpose of a VCS is to
+document and preserve changes in files (most notably code) to facilitate
+software development.
 
-| The purpose of a VCS is to document and preserve changes in files
-(most notably code) to facilitate development software.
-
-The documentation aspect of VCS provides a medium to capture who made a change,
-what they changed, and for what purpose. Preservation of changes prevents data
-loss, and allows easily confirming software behavior between versions.
+The messages in git commit history provide a medium to record who made
+changes, what they changed, and for what purpose. The existence of commit
+history prevents data loss, and allows easily confirming software behavior
+between versions.
 
 A VCS extends the concept of saving a project beyond a singular view of its
 current state to capturing its history over time.
 The history of a git repository takes the shape of a tree, formed of instances
 of code changes called "commits".
-
-The structure of the history of a git repository forms a tree, which traces a
-line from the creation of the repository to the end of each branch, which is
-called a "head".
 
 Version control systems are essential for modern collaborative software
 development.
@@ -35,7 +39,8 @@ git project, they provide cloud hosting of repositories and useful features.
 Git hosting services provide notable features such as pull requests, issue
 tracking, and project management that facilitate project collaboration.
 
-Most software development with git occurs via a hosting service.
+Most software development with git occurs with the involvement of a hosting
+service.
 
 Terminology
 ^^^^^^^^^^^
@@ -100,26 +105,28 @@ Essential Commands
 | **git stash**: Stash local changes in a temporary area.
 | **git clean**: Revove files not tracked by git.
 
+Creating, Cloning, and Uploading Repositories
+=============================================
+
 Creating a New Repository
-=========================
-The following is the canonical way to capture the current state of a directory
-as a new git repo:
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: text
 
-   $ cd /path/to/my/codebase
+   $ cd <FILEPATH_TO_CODEBASE>
    $ git init
    $ git add .
    $ git commit
 
 Cloning an Existing Repository from a Hosting Service
-=====================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Cloning can be performed via HTTPS or SSH protocols. Cloning will create a
 folder with the title of the repo in the directory it is performed in.
 
 .. code-block:: text
 
-   $ cd /path/to/desired/repo/location
+   $ cd <FILEPATH_TO_CODEBASE>
    # HTTPS form:
    $ git clone https://github.com/<USERNAME>/<REPO_NAME>.git
    # SSH form:
@@ -128,25 +135,40 @@ folder with the title of the repo in the directory it is performed in.
 Authentication may be required depending upon the repository. For HTTPS this
 takes the form of a username and password, for SSH it means a SSH key.
 
+Uploading an Existing Repo to Github
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: text
+
+   $ cd <FILEPATH_TO_CODEBASE>
+   $ git remote add origin <GITHUB_REPO_URL>
+   # verify that you set remote URL correctly
+   $ git remote -v
+   # push local changes to github repo
+   $ git push origin main
+
+.. code-block:: text
+
+   # Alternatively this can be done with github cli:
+   $ cd <FILEPATH_TO_CODEBASE>
+   gh repo create <REPO_NAME> --source=. --remote=origin --public
+
 Pushing to a Remote
 ===================
 
 .. code-block:: text
 
-   # Check status of current repository
+   # Committing and pushing all changes in its simplest form:
+   $ git commit -am "<COMMIT_MESSAGE>"
+   $ git push origin main
+
+.. code-block:: text
+
+   # Detailed form of committing and pushing:
+   # Check status
    $ git status
    # Stage changes
    $ git add <FILENAME> <FILENAME> <FOLDER_NAME>/<FILENAME> ...
-   # Return a file to its unmodified state with checkout or restore
-   $ git checkout -- <FILENAME>
-   $ git restore <FILENAME>
-   # Untrack a file but preserve it locally
-   git rm --cached <FILENAME>
-   # Untrack a file and delete it locally
-   git rm <FILENAME>
-   # Unstage a file with reset or restore
-   $ git reset HEAD <FILENAME>
-   $ git restore --staged <FILENAME>
    # Commit changes
    $ git commit -m "<COMMIT_MESSAGE>"
    # If you realize that you made a mistake in your commit you can revise it
@@ -156,6 +178,44 @@ Pushing to a Remote
    $ git push origin main
    # confirm status
    $ git status
+
+Untracking Changes
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: text
+
+   # Untrack a file but preserve it locally
+   git rm --cached <FILENAME>
+   # Untrack a file and delete it locally
+   git rm <FILENAME>
+
+Returning to Previous States
+============================
+
+.. code-block:: text
+
+   # Return a file to its unmodified state with checkout or restore
+   $ git checkout <FILEPATH>
+   $ git restore <FILEPATH>
+   # Replace a file with its version in another branch
+   $ git checkout <BRANCH_NAME> -- <FILEPATH>
+
+   # Unstage specific files
+   $ git reset <FILENAME>
+   $ git restore --staged <FILENAME>
+   # Unstage everything
+   $ git reset
+
+   # Reset the working directory to its previous status...
+   # Keeping unstaged changes (default):
+   $ git reset --mixed <COMMIT>
+   # Keeping staged changes:
+   $ git reset --soft <COMMIT>
+   # Not keeping any changes (dangerous, will delete untracked files):
+   $ git reset --hard <COMMIT>
+
+   # Create a new commit that reverses the changes of a previous commit
+   $ git revert <COMMIT>
 
 Branching
 =========
@@ -198,30 +258,30 @@ developers using that branch, since it could cause confusion or disruption.
    # Create a new branch and switch to it
    $ git switch -c <BRANCH_NAME>
 
-Once a branch has served its purpose it may be merged into another branch. It
-is good practice to delete a branch after merging since it no longer is
-necessary due to its changes being integrated with another branch.
+If the purpose of a branch is only to house changes for a feature or fix then
+likely it will be deleted after merging in order to keep the repo clean.
+However, another strategy is to have a long lived development branch that is
+never deleted, and instead periodically merged into the main branch.
 
 .. code-block:: text
 
-   # Merge branch into main
+   # Merge branch and then delete it:
    $ git switch main
    $ git merge <BRANCH_NAME>
    # Delete local branch
    $ git branch -d <BRANCH_NAME>
 
 If the branch was never pushed to a remote, then the previous commands will be
-sufficient to delete it. However, it is actually a push command that allows
-deletion of a remote branch.
+sufficient to delete it.
 
 .. code-block:: text
 
    # Delete remote branch
    $ git push -d <REMOTE> <BRANCH_NAME>
 
-Even if you delete a remote branch, and other collaborators fetch your changes,
-the obsolete branch will still exist in their repo until they execute a fetch
-command with the --prune flag.
+If other collaborators have pulled in your remote branch, then even if you
+delete it, that obsolete branch will still exist in their repo until they
+execute a fetch command with the --prune flag.
 
 .. code-block:: text
 
@@ -268,7 +328,7 @@ merge commit.
 
 .. code-block:: text
 
-   # Merge specified branch into active branch
+   # Merge specified branch into active branch:
    $ git merge <BRANCH_NAME>
 
 Merging can always be aborted if one wasn't expecting conflicts or realized
@@ -276,7 +336,7 @@ they had made a mistake.
 
 .. code-block:: text
 
-   # Abort as merge
+   # Abort merge:
    $ git merge --abort
 
 Rebasing
@@ -309,12 +369,9 @@ that repo sees, and potentially force them to do additional work to reconcile
 with the new history you have created.
 
 Which you use depends on best practices and the philosophy of the project.
-The best practices dictate the previous rule that rebasing should only be
-performed on commits that you and only you have touched. If you believe that
-commit history should reflect absolute history as it occurred, then rebasing
-may not be preferred. However if you believe that minor discrepencies are worth
-the added clarity then you may rebase often.
-
+If you believe that commit history should reflect absolute history as it
+occurred, then rebasing may not be preferred. However if you believe that
+minor discrepencies are worth the added clarity then you may rebase often.
 
 Resolving Merge Conflicts
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -370,23 +427,6 @@ state of your current branch so that you can revisit it later.
    # Revert to stashed state
    $ git stash apply
 
-Uploading an Existing Repo to Github
-====================================
-
-TODO is uploading the correct word?
-
-Initializing a git repository
-
-git init -b main
-add all files in current directory
-git add .
-commit files
-git commit -m "First commit"
-
-Adding a local repository to github with Github CLI (follow prompts)
-gh repo create
-
-
 Best Practices and Etiquette
 ============================
 
@@ -408,10 +448,10 @@ following way: "Fix login bug (#49)"
 Changing History
 ^^^^^^^^^^^^^^^^
 
-Generally git commit history should only ever be changed when those changes
-only exist on your local computer. Changing git history of a remote will change
-the history for many others, and will create pointless work in order to resolve
-.
+Generally git commit history should only be changed when those changes have
+only ever existed on your local computer. Changing git history on aremote will
+change the history for many others, and will create pointless work in order to
+resolve.
 
 .. code-block:: text
 
@@ -421,8 +461,9 @@ the history for many others, and will create pointless work in order to resolve
    # Use the interactive mode of the git rebase command for more flexible
    # editing of history
    $ git rebase -i
-   # Squashing a feature branch during merging
    $ git checkout main
+   $ git merge <BRANCH_TO_MERGE>
+   # (Alternatively) Squashing a feature branch during merging
    $ git merge --squash <BRANCH_TO_SQUASH>
 
 Squashing
@@ -438,18 +479,14 @@ and simplest commit history.
 
 .. code-block:: text
 
-   # Squash
-   $ git stash
-   # View list of stashes
+   # Squash all commits from the specified branch into current branch
+   $ git squash <BRANCH_TO_SQUASH>
 
 Ignoring Files with .gitignore
 ==============================
 
-Often a codebase will rely on files that are not code, yet are considerably
-large. Since these files do not need to be tracked as closely as code, it is
-safe to ignore them and provide alternate means to acquire them.
-Once files are >1MB it is wise to start considering whether they really need
-to be tracked.
+It is desirable to not track files that are irrelevant to a repo, or simply too
+large to track (>1MB is a good threshold to consider ignoring).
 
 Ignoring files can be managed in git with the .gitignore file.
 the .gitignore file is a file placed in your repository that specifies patterns
@@ -492,7 +529,11 @@ convey preferences whenever someone opens a new pull request on your repository
 .
 
 Licensing
-=========
+^^^^^^^^^
 
-TODO
-review of licensing options, importantance, etc.
+Software licenses specify how others can use, modify, and distribute your code.
+Not having a license would mean that you reserve all rights to your code,
+pending any software use agreements provided by the hosting service.
+
+Github can be used to automatically generate popular license files.
+MIT or Apache 2.0 are popularly recommended open source licenses.
